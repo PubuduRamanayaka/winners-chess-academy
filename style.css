@@ -1,0 +1,376 @@
+body {
+    background-color: #0B1F3A;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 40px;
+
+    background-color: #102A4C;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #F4C542;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.user-options {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-options a {
+    color: white;
+    text-decoration: none;
+}
+
+.user-options a:first-child {
+    background-color: #F4C542;
+    color: #0B1F3A;
+
+    padding: 10px 18px;
+    border-radius: 6px;
+
+    font-weight: bold;
+}
+
+.nav-links a:hover {
+    color: #F4C542;
+}
+
+.user-options a:hover {
+    color: #F4C542;
+}
+
+.user-options a:first-child:hover {
+    background-color: #ffffff;
+    color: #0B1F3A;
+}
+
+.hero {
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 60px 80px;
+}
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-subtitle {
+    color: #F4C542;
+    font-size: 18px;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.hero-content h1 {
+    font-size: 55px;
+    margin: 15px 0;
+    line-height: 1.1;
+}
+
+.hero-content h2 {
+    color: #2196F3;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.hero-description {
+    color: #B8C7D9;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.primary-button,
+.secondary-button {
+    padding: 14px 25px;
+
+    text-decoration: none;
+
+    border-radius: 6px;
+
+    font-weight: bold;
+}
+
+.primary-button {
+    background-color: #F4C542;
+    color: #0B1F3A;
+}
+
+.secondary-button {
+    border: 2px solid #F4C542;
+    color: #F4C542;
+}
+
+.primary-button:hover {
+    background-color: white;
+}
+
+.secondary-button:hover {
+    background-color: #F4C542;
+    color: #0B1F3A;
+}
+
+.hero-chess {
+    font-size: 250px;
+    color: #F4C542;
+
+    padding-right: 80px;
+}
+
+.academy-section {
+    padding: 80px;
+    background-color: #102A4C;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-heading p {
+    color: #F4C542;
+    letter-spacing: 4px;
+    font-weight: bold;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin: 10px 0;
+}
+
+.section-heading span {
+    color: #B8C7D9;
+    font-size: 17px;
+}
+
+.academy-cards {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1200px;
+    margin: auto;
+}
+
+.academy-card {
+    background-color: #0B1F3A;
+
+    padding: 30px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    color: white;
+
+    border: 1px solid transparent;
+
+    transition: 0.3s;
+}
+
+.academy-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #F4C542;
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.academy-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.academy-card p {
+    color: #B8C7D9;
+    line-height: 1.6;
+}
+
+.why-section {
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 80px;
+
+    background-color: #0B1F3A;
+}
+
+.why-content {
+    max-width: 600px;
+}
+
+.section-label {
+    color: #F4C542;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
+
+    font-size: 15px;
+}
+
+.why-content h2 {
+    font-size: 40px;
+
+    line-height: 1.2;
+
+    margin: 15px 0 25px;
+}
+
+.why-description {
+    color: #B8C7D9;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+}
+
+.why-list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+.why-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.why-item span {
+    font-size: 25px;
+
+    color: #F4C542;
+}
+
+.why-item p {
+    margin: 0;
+
+    font-weight: bold;
+}
+
+.why-image {
+    width: 400px;
+
+    height: 400px;
+
+    border-radius: 50%;
+
+    background-color: #102A4C;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 2px solid #F4C542;
+}
+
+.chess-symbol {
+    font-size: 200px;
+
+    color: #F4C542;
+}
+
+.stats-section {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    padding: 50px 80px;
+
+    background-color: #102A4C;
+
+    text-align: center;
+}
+
+.stat {
+    border-right: 1px solid #34506F;
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat h2 {
+    color: #F4C542;
+
+    font-size: 38px;
+
+    margin: 0 0 5px;
+}
+
+.stat p {
+    color: #B8C7D9;
+
+    margin: 0;
+}
+
+.tournament-page {
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 50px;
+}
+
+.tournament-page h1 {
+    font-size: 50px;
+    color: #F4C542;
+}
+
+.tournament-page p {
+    color: #B8C7D9;
+    font-size: 18px;
+}
