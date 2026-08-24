@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings | Winners Chess Academy</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ♟ Winners Chess Academy
+        </div>
+
+        <div class="nav-links">
+
+            <a href="index.html">Home</a>
+            <a href="programs.html">Programs</a>
+            <a href="tournaments.html">Tournaments</a>
+            <a href="schedule.html">Schedule</a>
+
+        </div>
+
+        <div class="user-options">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <button
+                id="settingsLogoutButton"
+                class="logout-button">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Settings -->
+
+    <main class="settings-page">
+
+
+        <div class="settings-header">
+
+            <p class="section-label">
+                ACCOUNT SETTINGS
+            </p>
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Manage your Winners Chess Academy
+                account and preferences.
+            </p>
+
+        </div>
+
+
+
+        <!-- Appearance -->
+
+        <section class="settings-card">
+
+            <div class="settings-card-header">
+
+                <div class="settings-card-icon">
+                    🎨
+                </div>
+
+                <div>
+
+                    <h2>
+                        Appearance
+                    </h2>
+
+                    <p>
+                        Customize how the website looks.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Dark Mode
+                    </strong>
+
+                    <p>
+                        Use the dark theme throughout
+                        the website.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        id="darkModeToggle"
+                        checked>
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Notifications -->
+
+        <section class="settings-card">
+
+            <div class="settings-card-header">
+
+                <div class="settings-card-icon">
+                    🔔
+                </div>
+
+                <div>
+
+                    <h2>
+                        Notifications
+                    </h2>
+
+                    <p>
+                        Manage your academy notifications.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Tournament Notifications
+                    </strong>
+
+                    <p>
+                        Receive updates about upcoming
+                        tournaments.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        id="tournamentNotifications"
+                        checked>
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+
+
+            <div class="setting-row">
+
+                <div>
+
+                    <strong>
+                        Class Reminders
+                    </strong>
+
+                    <p>
+                        Receive reminders about your
+                        upcoming classes.
+                    </p>
+
+                </div>
+
+
+                <label class="toggle">
+
+                    <input
+                        type="checkbox"
+                        id="classNotifications"
+                        checked>
+
+                    <span class="toggle-slider"></span>
+
+                </label>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Account -->
+
+        <section class="settings-card">
+
+            <div class="settings-card-header">
+
+                <div class="settings-card-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <h2>
+                        Account
+                    </h2>
+
+                    <p>
+                        Manage your account information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-links">
+
+                <a href="profile.html">
+
+                    <div>
+
+                        <strong>
+                            Edit Profile
+                        </strong>
+
+                        <p>
+                            Change your personal information.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+                <a href="#" id="changePasswordButton">
+
+                    <div>
+
+                        <strong>
+                            Change Password
+                        </strong>
+
+                        <p>
+                            Update your account password.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Danger Zone -->
+
+        <section class="settings-card danger-card">
+
+            <div class="settings-card-header">
+
+                <div class="settings-card-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <h2>
+                        Danger Zone
+                    </h2>
+
+                    <p>
+                        Actions here can affect your account.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <button
+                id="deleteAccountButton"
+                class="delete-button">
+
+                Delete Account
+
+            </button>
+
+            <p
+                id="settingsMessage"
+                class="form-status">
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer class="footer">
+
+        <div class="footer-content">
+
+
+            <div class="footer-about">
+
+                <div class="footer-logo">
+                    ♟ Winners Chess Academy
+                </div>
+
+                <p>
+                    Master the game. Become a winner.
+                    Developing chess players through
+                    knowledge, practice and competition.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Academy
+                </h3>
+
+                <a href="programs.html">
+                    Programs
+                </a>
+
+                <a href="schedule.html">
+                    Schedule
+                </a>
+
+                <a href="tournaments.html">
+                    Tournaments
+                </a>
+
+                <a href="achievements.html">
+                    Achievements
+                </a>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="settings.html">
+                    Settings
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Winners Chess Academy.
+                All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
