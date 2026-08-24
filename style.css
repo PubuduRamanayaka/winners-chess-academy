@@ -375,93 +375,6 @@ body {
     font-size: 18px;
 }
 
-@media (max-width: 768px) {
-
-    .navbar {
-        flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .user-options {
-        justify-content: center;
-    }
-
-        .hero {
-        flex-direction: column;
-        text-align: center;
-        padding: 60px 20px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-content h1 {
-        font-size: 40px;
-    }
-
-    .hero-content h2 {
-        font-size: 24px;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .hero-chess {
-        font-size: 150px;
-        padding-right: 0;
-        margin-top: 30px;
-    }
-
-        .academy-section {
-        padding: 60px 20px;
-    }
-
-    .academy-cards {
-        grid-template-columns: 1fr;
-    }
-
-        .why-section {
-        flex-direction: column;
-        text-align: center;
-        padding: 60px 20px;
-    }
-
-    .why-list {
-        grid-template-columns: 1fr;
-        text-align: left;
-    }
-
-    .why-image {
-        width: 280px;
-        height: 280px;
-        margin-top: 40px;
-    }
-
-    .chess-symbol {
-        font-size: 140px;
-    }
-
-        .stats-section {
-        grid-template-columns: 1fr 1fr;
-        padding: 40px 20px;
-        gap: 30px;
-    }
-
-    .stat {
-        border-right: none;
-    }
-
-}
-
 .tournament-hero {
     min-height: 50vh;
 
@@ -573,136 +486,6 @@ body {
     display: inline-block;
 
     margin-top: 15px;
-}
-
-@media (max-width: 768px) {
-        .tournament-hero h1 {
-        font-size: 40px;
-    }
-
-    .upcoming-section {
-        padding: 60px 20px;
-    }
-
-    .tournament-card {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .tournament-date {
-        min-width: 90px;
-        height: 90px;
-    }
-
-        .past-section {
-        padding: 60px 20px;
-    }
-
-    .past-row {
-        grid-template-columns: 1fr;
-        gap: 8px;
-        text-align: center;
-    }
-
-    .past-header {
-        display: none;
-    }
-
-        .footer {
-        padding: 50px 25px 20px;
-    }
-
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        text-align: center;
-    }
-
-    .footer-about p {
-        margin: auto;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-        .coaches-hero h1 {
-        font-size: 40px;
-    }
-
-    .coaches-section {
-        padding: 60px 20px;
-    }
-
-    .coach-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .coach-photo {
-        height: 250px;
-    }
-
-    .coach-cta h2 {
-        font-size: 30px;
-    }
-
-        .programs-hero h1 {
-        font-size: 40px;
-    }
-
-    .programs-section {
-        padding: 60px 20px;
-    }
-
-    .program-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .featured-program {
-        transform: none;
-    }
-
-    .program-cta h2 {
-        font-size: 30px;
-    }
-
-        .locations-hero h1 {
-        font-size: 40px;
-    }
-
-    .locations-section {
-        padding: 60px 20px;
-    }
-
-    .location-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .map-section {
-        padding: 60px 20px;
-
-        grid-template-columns: 1fr;
-
-        text-align: center;
-    }
-
-    .map-text p:last-child {
-        margin: auto;
-    }
-
-    .map-placeholder {
-        height: 300px;
-    }
-
-    .location-cta h2 {
-        font-size: 30px;
-    }
 }
 
 .past-section {
@@ -1425,4 +1208,718 @@ body {
 
 .schedule-row:not(.schedule-header):hover {
     background-color: #102A4C;
+}
+
+.schedule-info {
+    padding: 60px 80px;
+
+    background-color: #0B1F3A;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+.schedule-info h2 {
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+.schedule-info p {
+    color: #B8C7D9;
+
+    max-width: 600px;
+
+    line-height: 1.6;
+}
+
+.about-hero {
+
+    min-height: 50vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+
+}
+
+.about-hero h1 {
+
+    font-size: 55px;
+
+    margin: 15px 0;
+
+}
+
+.about-hero p:last-child {
+
+    color: #B8C7D9;
+
+    font-size: 18px;
+
+    max-width: 700px;
+
+    line-height: 1.7;
+
+}
+
+.about-intro {
+
+    padding: 90px;
+
+    background-color: #102A4C;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+.about-intro-text h2 {
+
+    font-size: 40px;
+
+    margin: 15px 0 25px;
+
+}
+
+.about-intro-text p:not(.section-label) {
+
+    color: #B8C7D9;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
+
+}
+
+.about-chess-box {
+
+    min-height: 350px;
+
+    background-color: #0B1F3A;
+
+    border: 1px solid #34506F;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+.big-chess-piece {
+
+    font-size: 130px;
+
+    color: #F4C542;
+
+    line-height: 1;
+
+}
+
+.about-chess-box h3 {
+
+    font-size: 28px;
+
+    margin: 20px 0 10px;
+
+}
+
+.about-chess-box p {
+
+    color: #B8C7D9;
+
+}
+
+.mission-section {
+
+    padding: 90px 80px;
+
+    background-color: #0B1F3A;
+
+}
+
+.mission-cards {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+
+}
+
+.mission-card {
+
+    background-color: #102A4C;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+    text-align: center;
+
+    border: 1px solid transparent;
+
+    transition: 0.3s;
+
+}
+
+.mission-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #F4C542;
+
+}
+
+.mission-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 20px;
+
+}
+
+.mission-card h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 15px;
+
+}
+
+.mission-card p {
+
+    color: #B8C7D9;
+
+    line-height: 1.7;
+
+}
+
+.why-chess-section {
+
+    padding: 90px;
+
+    background-color: #102A4C;
+
+    display: grid;
+
+    grid-template-columns: 1.3fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+
+}
+
+.why-chess-content h2 {
+
+    font-size: 40px;
+
+    margin: 15px 0;
+
+}
+
+.why-chess-content > p:not(.section-label) {
+
+    color: #B8C7D9;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+}
+
+.chess-benefits {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+
+}
+
+.benefit {
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: flex-start;
+
+}
+
+.benefit > span {
+
+    font-size: 30px;
+
+}
+
+.benefit h3 {
+
+    font-size: 18px;
+
+    margin-bottom: 5px;
+
+}
+
+.benefit p {
+
+    color: #B8C7D9;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+.chess-visual {
+
+    min-height: 400px;
+
+    background-color: #0B1F3A;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px solid #34506F;
+
+}
+
+.chess-quote span {
+
+    font-size: 120px;
+
+    color: #F4C542;
+
+}
+
+.chess-quote p {
+
+    color: #B8C7D9;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    max-width: 300px;
+
+    line-height: 1.6;
+
+}
+
+.about-cta {
+
+    padding: 90px 20px;
+
+    text-align: center;
+
+    background-color: #0B1F3A;
+
+}
+
+.about-cta h2 {
+
+    font-size: 38px;
+
+    margin-bottom: 15px;
+
+}
+
+.about-cta p {
+
+    color: #B8C7D9;
+
+    max-width: 650px;
+
+    margin: 0 auto 30px;
+
+    line-height: 1.7;
+
+}
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .user-options {
+        justify-content: center;
+    }
+
+        .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 24px;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-chess {
+        font-size: 150px;
+        padding-right: 0;
+        margin-top: 30px;
+    }
+
+        .academy-section {
+        padding: 60px 20px;
+    }
+
+    .academy-cards {
+        grid-template-columns: 1fr;
+    }
+
+        .why-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+    }
+
+    .why-list {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .why-image {
+        width: 280px;
+        height: 280px;
+        margin-top: 40px;
+    }
+
+    .chess-symbol {
+        font-size: 140px;
+    }
+
+        .stats-section {
+        grid-template-columns: 1fr 1fr;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .stat {
+        border-right: none;
+    }
+
+    .tournament-hero h1 {
+        font-size: 40px;
+    }
+
+    .upcoming-section {
+        padding: 60px 20px;
+    }
+
+    .tournament-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tournament-date {
+        min-width: 90px;
+        height: 90px;
+    }
+
+        .past-section {
+        padding: 60px 20px;
+    }
+
+    .past-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .past-header {
+        display: none;
+    }
+
+        .footer {
+        padding: 50px 25px 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .footer-about p {
+        margin: auto;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+        .coaches-hero h1 {
+        font-size: 40px;
+    }
+
+    .coaches-section {
+        padding: 60px 20px;
+    }
+
+    .coach-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .coach-photo {
+        height: 250px;
+    }
+
+    .coach-cta h2 {
+        font-size: 30px;
+    }
+
+        .programs-hero h1 {
+        font-size: 40px;
+    }
+
+    .programs-section {
+        padding: 60px 20px;
+    }
+
+    .program-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-program {
+        transform: none;
+    }
+
+    .program-cta h2 {
+        font-size: 30px;
+    }
+
+        .locations-hero h1 {
+        font-size: 40px;
+    }
+
+    .locations-section {
+        padding: 60px 20px;
+    }
+
+    .location-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .map-section {
+        padding: 60px 20px;
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .map-text p:last-child {
+        margin: auto;
+    }
+
+    .map-placeholder {
+        height: 300px;
+    }
+
+    .location-cta h2 {
+        font-size: 30px;
+    }
+        .schedule-hero h1 {
+        font-size: 40px;
+    }
+
+    .schedule-section {
+        padding: 60px 20px;
+    }
+
+    .schedule-table {
+        background-color: transparent;
+    }
+
+    .schedule-header {
+        display: none;
+    }
+
+    .schedule-row {
+        display: block;
+
+        background-color: #0B1F3A;
+
+        margin-bottom: 20px;
+
+        padding: 25px;
+
+        border-radius: 10px;
+
+        text-align: center;
+    }
+
+    .schedule-row div {
+        margin-bottom: 10px;
+    }
+
+    .schedule-row div:first-child {
+        color: #F4C542;
+
+        font-size: 20px;
+
+        font-weight: bold;
+    }
+
+    .schedule-info {
+        flex-direction: column;
+
+        text-align: center;
+
+        padding: 60px 20px;
+    }
+
+    .about-hero h1 {
+
+        font-size: 40px;
+
+    }
+
+
+    .about-intro {
+
+        padding: 60px 20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .about-intro-text h2 {
+
+        font-size: 32px;
+
+    }
+
+
+    .mission-section {
+
+        padding: 60px 20px;
+
+    }
+
+
+    .mission-cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .why-chess-section {
+
+        padding: 60px 20px;
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .why-chess-content h2 {
+
+        font-size: 32px;
+
+    }
+
+
+    .chess-benefits {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .chess-visual {
+
+        min-height: 300px;
+
+    }
+
+
+    .about-cta h2 {
+
+        font-size: 30px;
+
+    }
+
 }
