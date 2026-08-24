@@ -2509,6 +2509,285 @@ body {
 
 }
 
+.dashboard-page {
+
+    min-height: 80vh;
+
+    padding: 70px 80px;
+
+    background-color: #102A4C;
+
+}
+
+.dashboard-welcome {
+
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    padding: 40px;
+
+    background-color: #0B1F3A;
+
+    border: 1px solid #34506F;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.dashboard-welcome h1 {
+
+    font-size: 40px;
+
+    margin: 12px 0;
+
+}
+
+.dashboard-welcome h1 span {
+
+    color: #F4C542;
+
+}
+
+.dashboard-welcome p:last-child {
+
+    color: #B8C7D9;
+
+}
+
+.dashboard-chess-icon {
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    background-color: #F4C542;
+
+    color: #0B1F3A;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 60px;
+
+}
+
+.dashboard-grid {
+
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+.dashboard-card {
+
+    padding: 30px;
+
+    background-color: #0B1F3A;
+
+    border: 1px solid #34506F;
+
+    border-radius: 12px;
+
+    transition: transform 0.3s,
+                border-color 0.3s;
+
+}
+
+.dashboard-card:hover {
+
+    transform: translateY(-5px);
+
+    border-color: #F4C542;
+
+}
+
+.dashboard-card-icon {
+
+    font-size: 35px;
+
+    margin-bottom: 20px;
+
+}
+
+.dashboard-card h2 {
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+
+}
+
+.dashboard-card p {
+
+    color: #B8C7D9;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+
+}
+
+.dashboard-link {
+
+    color: #F4C542;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    font-size: 14px;
+
+}
+
+.dashboard-account {
+
+    max-width: 1200px;
+
+    margin: 0 auto 50px;
+
+    padding: 40px;
+
+    background-color: #0B1F3A;
+
+    border: 1px solid #34506F;
+
+    border-radius: 15px;
+
+}
+
+.dashboard-section-heading {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 30px;
+
+}
+
+.dashboard-section-heading h2 {
+
+    font-size: 30px;
+
+    margin-top: 10px;
+
+}
+
+.account-info-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+}
+
+.account-info-item {
+
+    padding: 20px;
+
+    background-color: #102A4C;
+
+    border-radius: 8px;
+
+}
+
+.account-info-item span {
+
+    display: block;
+
+    color: #8FA5BC;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+
+}
+
+.account-info-item strong {
+
+    font-size: 16px;
+
+    word-break: break-word;
+
+}
+
+.dashboard-actions {
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+}
+
+.dashboard-actions h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+
+}
+
+.quick-action-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+}
+
+.logout-button {
+
+    background: none;
+
+    border: none;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+.logout-button:hover {
+
+    color: #F4C542;
+
+}
+
 
 
 
@@ -3052,6 +3331,91 @@ body {
     .auth-header h1 {
 
         font-size: 28px;
+
+    }
+
+        .dashboard-page {
+
+        padding: 50px 20px;
+
+    }
+
+
+    .dashboard-welcome {
+
+        padding: 30px 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+    }
+
+
+    .dashboard-welcome h1 {
+
+        font-size: 30px;
+
+    }
+
+
+    .dashboard-chess-icon {
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 40px;
+
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .dashboard-account {
+
+        padding: 25px;
+
+    }
+
+
+    .dashboard-section-heading {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+    }
+
+
+    .account-info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .quick-action-buttons {
+
+        flex-direction: column;
+
+    }
+
+
+    .quick-action-buttons a {
+
+        width: 100%;
+
+        box-sizing: border-box;
 
     }
 
