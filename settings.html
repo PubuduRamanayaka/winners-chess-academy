@@ -16,7 +16,9 @@
 <body>
 
 
-    <!-- Navigation -->
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
 
     <nav class="navbar">
 
@@ -24,14 +26,35 @@
             ♟ Winners Chess Academy
         </div>
 
-        <div class="nav-links">
 
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="tournaments.html">Tournaments</a>
-            <a href="schedule.html">Schedule</a>
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="programs.html">
+                Programs
+            </a>
+
+            <a href="tournaments.html">
+                Tournaments
+            </a>
+
+            <a href="coaches.html">
+                Coaches
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
         </div>
+
 
         <div class="user-options">
 
@@ -44,6 +67,7 @@
             </a>
 
             <button
+                type="button"
                 id="settingsLogoutButton"
                 class="logout-button">
 
@@ -53,14 +77,31 @@
 
         </div>
 
+
+        <!-- Mobile Menu -->
+
+        <button
+            type="button"
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
+
     </nav>
 
 
 
-    <!-- Settings -->
+    <!-- =====================================================
+         SETTINGS PAGE
+         ===================================================== -->
 
     <main class="settings-page">
 
+
+        <!-- Page Header -->
 
         <div class="settings-header">
 
@@ -81,7 +122,9 @@
 
 
 
-        <!-- Appearance -->
+        <!-- =================================================
+             APPEARANCE
+             ================================================= -->
 
         <section class="settings-card">
 
@@ -106,10 +149,9 @@
             </div>
 
 
-
             <div class="setting-row">
 
-                <div>
+                <div class="setting-information">
 
                     <strong>
                         Dark Mode
@@ -123,12 +165,13 @@
                 </div>
 
 
+                <!-- Dark Mode Switch -->
+
                 <label class="toggle">
 
                     <input
                         type="checkbox"
-                        id="darkModeToggle"
-                        checked>
+                        id="darkModeToggle">
 
                     <span class="toggle-slider"></span>
 
@@ -140,7 +183,9 @@
 
 
 
-        <!-- Notifications -->
+        <!-- =================================================
+             NOTIFICATIONS
+             ================================================= -->
 
         <section class="settings-card">
 
@@ -165,10 +210,11 @@
             </div>
 
 
+            <!-- Tournament Notifications -->
 
             <div class="setting-row">
 
-                <div>
+                <div class="setting-information">
 
                     <strong>
                         Tournament Notifications
@@ -186,8 +232,7 @@
 
                     <input
                         type="checkbox"
-                        id="tournamentNotifications"
-                        checked>
+                        id="tournamentNotifications">
 
                     <span class="toggle-slider"></span>
 
@@ -196,10 +241,11 @@
             </div>
 
 
+            <!-- Class Notifications -->
 
             <div class="setting-row">
 
-                <div>
+                <div class="setting-information">
 
                     <strong>
                         Class Reminders
@@ -217,8 +263,7 @@
 
                     <input
                         type="checkbox"
-                        id="classNotifications"
-                        checked>
+                        id="classNotifications">
 
                     <span class="toggle-slider"></span>
 
@@ -230,7 +275,9 @@
 
 
 
-        <!-- Account -->
+        <!-- =================================================
+             ACCOUNT
+             ================================================= -->
 
         <section class="settings-card">
 
@@ -255,12 +302,16 @@
             </div>
 
 
-
             <div class="settings-links">
 
-                <a href="profile.html">
 
-                    <div>
+                <!-- Edit Profile -->
+
+                <a
+                    href="profile.html"
+                    class="settings-link">
+
+                    <div class="settings-link-content">
 
                         <strong>
                             Edit Profile
@@ -272,16 +323,22 @@
 
                     </div>
 
-                    <span>
+                    <span class="settings-link-arrow">
                         →
                     </span>
 
                 </a>
 
 
-                <a href="#" id="changePasswordButton">
 
-                    <div>
+                <!-- Change Password -->
+
+                <a
+                    href="#"
+                    id="changePasswordButton"
+                    class="settings-link">
+
+                    <div class="settings-link-content">
 
                         <strong>
                             Change Password
@@ -293,7 +350,7 @@
 
                     </div>
 
-                    <span>
+                    <span class="settings-link-arrow">
                         →
                     </span>
 
@@ -301,11 +358,102 @@
 
             </div>
 
+
+
+            <!-- =================================================
+                 CHANGE PASSWORD
+                 ================================================= -->
+
+            <div
+                id="changePasswordSection"
+                class="password-change-section"
+                style="display: none;">
+
+                <h3>
+                    Change Password
+                </h3>
+
+
+                <div class="form-group">
+
+                    <label for="currentPassword">
+                        Current Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="currentPassword"
+                        placeholder="Enter current password">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="newPassword">
+                        New Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="newPassword"
+                        placeholder="Enter new password">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="confirmNewPassword">
+                        Confirm New Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirmNewPassword"
+                        placeholder="Confirm new password">
+
+                </div>
+
+
+                <div class="profile-form-buttons">
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="savePasswordButton">
+
+                        Update Password
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelPasswordButton">
+
+                        Cancel
+
+                    </button>
+
+                </div>
+
+
+                <p
+                    id="passwordMessage"
+                    class="form-status">
+                </p>
+
+            </div>
+
         </section>
 
 
 
-        <!-- Danger Zone -->
+        <!-- =================================================
+             DANGER ZONE
+             ================================================= -->
 
         <section class="settings-card danger-card">
 
@@ -330,14 +478,15 @@
             </div>
 
 
-
             <button
+                type="button"
                 id="deleteAccountButton"
                 class="delete-button">
 
                 Delete Account
 
             </button>
+
 
             <p
                 id="settingsMessage"
@@ -351,12 +500,17 @@
 
 
 
-    <!-- Footer -->
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
 
     <footer class="footer">
 
+
         <div class="footer-content">
 
+
+            <!-- Academy -->
 
             <div class="footer-about">
 
@@ -373,54 +527,91 @@
             </div>
 
 
-            <div class="footer-links">
+            <!-- Academy Links -->
+
+            <div>
 
                 <h3>
                     Academy
                 </h3>
 
-                <a href="programs.html">
-                    Programs
-                </a>
+                <div class="footer-links">
 
-                <a href="schedule.html">
-                    Schedule
-                </a>
+                    <a href="programs.html">
+                        Programs
+                    </a>
 
-                <a href="tournaments.html">
-                    Tournaments
-                </a>
+                    <a href="schedule.html">
+                        Schedule
+                    </a>
 
-                <a href="achievements.html">
-                    Achievements
-                </a>
+                    <a href="tournaments.html">
+                        Tournaments
+                    </a>
+
+                    <a href="achievements.html">
+                        Achievements
+                    </a>
+
+                </div>
 
             </div>
 
 
-            <div class="footer-links">
+            <!-- Account Links -->
+
+            <div>
 
                 <h3>
                     Account
                 </h3>
 
-                <a href="dashboard.html">
-                    Dashboard
-                </a>
+                <div class="footer-links">
 
-                <a href="profile.html">
-                    Profile
-                </a>
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
 
-                <a href="settings.html">
-                    Settings
-                </a>
+                    <a href="profile.html">
+                        Profile
+                    </a>
+
+                    <a href="settings.html">
+                        Settings
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="footer-contact">
+
+                <h3>
+                    Contact Us
+                </h3>
+
+                <p>
+                    📍 Ratnapura, Sri Lanka
+                </p>
+
+                <p>
+                    📞 +94 XX XXX XXXX
+                </p>
+
+                <p>
+                    ✉️ winnerschessacademy@gmail.com
+                </p>
 
             </div>
 
 
         </div>
 
+
+        <!-- Bottom Footer -->
 
         <div class="footer-bottom">
 
@@ -429,10 +620,31 @@
                 All Rights Reserved.
             </p>
 
+
+            <div class="social-links">
+
+                <a href="#">
+                    Facebook
+                </a>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    WhatsApp
+                </a>
+
+            </div>
+
         </div>
+
 
     </footer>
 
+
+
+    <!-- JavaScript -->
 
     <script src="script.js"></script>
 

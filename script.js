@@ -1,3 +1,62 @@
+/* =========================================================
+   WINNERS CHESS ACADEMY
+   MAIN JAVASCRIPT
+   ========================================================= */
+
+
+/* =========================================================
+   HELPER FUNCTIONS
+   ========================================================= */
+
+// Get saved user
+function getSavedUser() {
+
+    const savedUser = localStorage.getItem("winnersChessUser");
+
+    if (!savedUser) {
+        return null;
+    }
+
+    try {
+
+        return JSON.parse(savedUser);
+
+    } catch (error) {
+
+        console.log("Saved user data is corrupted.");
+
+        localStorage.removeItem("winnersChessUser");
+
+        return null;
+    }
+}
+
+
+// Check whether user is logged in
+function isLoggedIn() {
+
+    return localStorage.getItem("winnersChessLoggedIn") === "true";
+}
+
+
+// Protect pages that require login
+function protectPage() {
+
+    if (!isLoggedIn() || !getSavedUser()) {
+
+        window.location.href = "login.html";
+
+        return false;
+    }
+
+    return true;
+}
+
+
+/* =========================================================
+   REGISTER
+   ========================================================= */
+
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
@@ -6,23 +65,41 @@ if (registerForm) {
 
         event.preventDefault();
 
-        const name =
-            document.getElementById("registerName").value;
 
-        const email =
-            document.getElementById("registerEmail").value;
+        // Get form values
 
-        const phone =
-            document.getElementById("registerPhone").value;
+        const name = document.getElementById("registerName").value.trim();
 
-        const password =
-            document.getElementById("registerPassword").value;
+        const email = document.getElementById("registerEmail").value.trim().toLowerCase();
 
-        const confirmPassword =
-            document.getElementById("confirmPassword").value;
+        const phone = document.getElementById("registerPhone").value.trim();
 
-        const message =
-            document.getElementById("registerMessage");
+        const password = document.getElementById("registerPassword").value;
+
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        const message = document.getElementById("registerMessage");
+
+
+        // Check required fields
+
+        if (!name || !email || !phone || !password || !confirmPassword) {
+
+            message.textContent = "Please fill in all fields.";
+
+            return;
+        }
+
+
+        // Check password length
+
+        if (password.length < 6) {
+
+            message.textContent =
+                "Password must contain at least 6 characters.";
+
+            return;
+        }
 
 
         // Check passwords
@@ -36,12 +113,14 @@ if (registerForm) {
         }
 
 
-        // Check password length
+        // Check whether an account already exists
 
-        if (password.length < 6) {
+        const existingUser = getSavedUser();
+
+        if (existingUser && existingUser.email === email) {
 
             message.textContent =
-                "Password must contain at least 6 characters.";
+                "An account with this email already exists.";
 
             return;
         }
@@ -62,7 +141,7 @@ if (registerForm) {
         };
 
 
-        // Save user in browser
+        // Save user
 
         localStorage.setItem(
             "winnersChessUser",
@@ -70,11 +149,18 @@ if (registerForm) {
         );
 
 
+        // Make sure user is not automatically logged in
+
+        localStorage.removeItem("winnersChessLoggedIn");
+
+
+        // Show success message
+
         message.textContent =
             "Account created successfully!";
 
 
-        // Go to login page after 1.5 seconds
+        // Go to login page
 
         setTimeout(function() {
 
@@ -86,6 +172,11 @@ if (registerForm) {
 
 }
 
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
+
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
@@ -95,8 +186,10 @@ if (loginForm) {
         event.preventDefault();
 
 
+        // Get form values
+
         const email =
-            document.getElementById("loginEmail").value;
+            document.getElementById("loginEmail").value.trim().toLowerCase();
 
         const password =
             document.getElementById("loginPassword").value;
@@ -105,27 +198,31 @@ if (loginForm) {
             document.getElementById("loginMessage");
 
 
+        // Check empty fields
+
+        if (!email || !password) {
+
+            message.textContent =
+                "Please enter your email and password.";
+
+            return;
+        }
+
+
         // Get saved user
 
-        const savedUser =
-            localStorage.getItem("winnersChessUser");
+        const user = getSavedUser();
 
 
-        // Check if an account exists
+        // Check account
 
-        if (!savedUser) {
+        if (!user) {
 
             message.textContent =
                 "No account found. Please register first.";
 
             return;
         }
-
-
-        // Convert saved data back into an object
-
-        const user =
-            JSON.parse(savedUser);
 
 
         // Check email and password
@@ -139,7 +236,7 @@ if (loginForm) {
                 "Login successful!";
 
 
-            // Remember that the user is logged in
+            // Save login status
 
             localStorage.setItem(
                 "winnersChessLoggedIn",
@@ -151,7 +248,8 @@ if (loginForm) {
 
             setTimeout(function() {
 
-                window.location.href = "dashboard.html";
+                window.location.href =
+                    "dashboard.html";
 
             }, 1000);
 
@@ -168,6 +266,11 @@ if (loginForm) {
 
 }
 
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
 const dashboardName =
     document.getElementById("dashboardName");
 
@@ -183,46 +286,60 @@ const accountPhone =
 
 if (dashboardName) {
 
-    const loggedIn =
-        localStorage.getItem("winnersChessLoggedIn");
+    if (!protectPage()) {
 
-    const savedUser =
-        localStorage.getItem("winnersChessUser");
-
-
-    // If user isn't logged in, return to login
-
-    if (loggedIn !== "true" || !savedUser) {
-
-        window.location.href = "login.html";
+        // Stop dashboard code
 
     }
 
     else {
 
-        const user =
-            JSON.parse(savedUser);
+        const user = getSavedUser();
 
 
-        dashboardName.textContent =
-            user.name;
+        if (user) {
 
-        accountName.textContent =
-            user.name;
+            // Dashboard name
 
-        accountEmail.textContent =
-            user.email;
+            dashboardName.textContent =
+                user.name;
 
-        accountPhone.textContent =
-            user.phone;
+
+            // Account information
+
+            if (accountName) {
+
+                accountName.textContent =
+                    user.name;
+            }
+
+
+            if (accountEmail) {
+
+                accountEmail.textContent =
+                    user.email;
+            }
+
+
+            if (accountPhone) {
+
+                accountPhone.textContent =
+                    user.phone;
+            }
+
+        }
 
     }
 
 }
 
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
 const logoutButton =
     document.getElementById("logoutButton");
-
 
 if (logoutButton) {
 
@@ -232,13 +349,17 @@ if (logoutButton) {
             "winnersChessLoggedIn"
         );
 
-
         window.location.href =
             "login.html";
 
     });
 
 }
+
+
+/* =========================================================
+   PROFILE PAGE
+   ========================================================= */
 
 const profileName =
     document.getElementById("profileName");
@@ -273,90 +394,148 @@ const profileForm =
 
 if (profileName) {
 
-    const loggedIn =
-        localStorage.getItem("winnersChessLoggedIn");
+    if (!protectPage()) {
 
-    const savedUser =
-        localStorage.getItem("winnersChessUser");
-
-
-    if (loggedIn !== "true" || !savedUser) {
-
-        window.location.href = "login.html";
+        // Stop profile code
 
     }
 
     else {
 
-        const user =
-            JSON.parse(savedUser);
+        const user = getSavedUser();
 
 
-        profileName.textContent =
-            user.name;
+        if (user) {
 
-        profileEmail.textContent =
-            user.email;
+            // Header
 
-        profileFullName.textContent =
-            user.name;
-
-        profileEmailAddress.textContent =
-            user.email;
-
-        profilePhone.textContent =
-            user.phone;
+            profileName.textContent =
+                user.name;
 
 
-        // First letter of the user's name
+            profileEmail.textContent =
+                user.email;
 
-        profileAvatar.textContent =
-            user.name.charAt(0).toUpperCase();
+
+            // Profile information
+
+            if (profileFullName) {
+
+                profileFullName.textContent =
+                    user.name;
+            }
+
+
+            if (profileEmailAddress) {
+
+                profileEmailAddress.textContent =
+                    user.email;
+            }
+
+
+            if (profilePhone) {
+
+                profilePhone.textContent =
+                    user.phone;
+            }
+
+
+            // Avatar
+
+            if (profileAvatar) {
+
+                profileAvatar.textContent =
+                    user.name.charAt(0).toUpperCase();
+            }
+
+        }
 
     }
 
 }
 
+
+/* =========================================================
+   EDIT PROFILE
+   ========================================================= */
+
 if (editProfileButton) {
 
     editProfileButton.addEventListener("click", function() {
 
-        const savedUser =
-            localStorage.getItem("winnersChessUser");
-
-        const user =
-            JSON.parse(savedUser);
+        const user = getSavedUser();
 
 
-        document.getElementById("editName").value =
-            user.name;
+        if (!user) {
 
-        document.getElementById("editPhone").value =
-            user.phone;
+            window.location.href =
+                "login.html";
 
-
-        editProfileSection.style.display =
-            "block";
+            return;
+        }
 
 
-        editProfileSection.scrollIntoView({
-            behavior: "smooth"
-        });
+        const editName =
+            document.getElementById("editName");
+
+        const editPhone =
+            document.getElementById("editPhone");
+
+
+        if (editName) {
+
+            editName.value =
+                user.name;
+        }
+
+
+        if (editPhone) {
+
+            editPhone.value =
+                user.phone;
+        }
+
+
+        if (editProfileSection) {
+
+            editProfileSection.style.display =
+                "block";
+
+
+            editProfileSection.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     });
 
 }
+
+
+/* =========================================================
+   CANCEL EDIT PROFILE
+   ========================================================= */
 
 if (cancelEditButton) {
 
     cancelEditButton.addEventListener("click", function() {
 
-        editProfileSection.style.display =
-            "none";
+        if (editProfileSection) {
+
+            editProfileSection.style.display =
+                "none";
+
+        }
 
     });
 
 }
+
+
+/* =========================================================
+   SAVE PROFILE CHANGES
+   ========================================================= */
 
 if (profileForm) {
 
@@ -365,24 +544,82 @@ if (profileForm) {
         event.preventDefault();
 
 
-        const savedUser =
-            localStorage.getItem("winnersChessUser");
+        const user = getSavedUser();
 
-        const user =
-            JSON.parse(savedUser);
+
+        if (!user) {
+
+            window.location.href =
+                "login.html";
+
+            return;
+        }
+
+
+        const editName =
+            document.getElementById("editName");
+
+        const editPhone =
+            document.getElementById("editPhone");
+
+
+        if (!editName || !editPhone) {
+
+            return;
+        }
 
 
         const newName =
-            document.getElementById("editName").value;
+            editName.value.trim();
 
         const newPhone =
-            document.getElementById("editPhone").value;
+            editPhone.value.trim();
 
 
-        user.name = newName;
+        // Check name
 
-        user.phone = newPhone;
+        if (!newName) {
 
+            const profileMessage =
+                document.getElementById("profileMessage");
+
+            if (profileMessage) {
+
+                profileMessage.textContent =
+                    "Please enter your name.";
+            }
+
+            return;
+        }
+
+
+        // Check phone
+
+        if (!newPhone) {
+
+            const profileMessage =
+                document.getElementById("profileMessage");
+
+            if (profileMessage) {
+
+                profileMessage.textContent =
+                    "Please enter your phone number.";
+            }
+
+            return;
+        }
+
+
+        // Update user
+
+        user.name =
+            newName;
+
+        user.phone =
+            newPhone;
+
+
+        // Save updated user
 
         localStorage.setItem(
             "winnersChessUser",
@@ -390,53 +627,90 @@ if (profileForm) {
         );
 
 
-        document.getElementById("profileMessage")
-            .textContent =
-            "Profile updated successfully!";
+        // Success message
+
+        const profileMessage =
+            document.getElementById("profileMessage");
+
+        if (profileMessage) {
+
+            profileMessage.textContent =
+                "Profile updated successfully!";
+        }
 
 
         // Update page immediately
 
-        profileName.textContent =
-            user.name;
+        if (profileName) {
 
-        profileFullName.textContent =
-            user.name;
+            profileName.textContent =
+                user.name;
+        }
 
-        profilePhone.textContent =
-            user.phone;
 
-        profileAvatar.textContent =
-            user.name.charAt(0).toUpperCase();
+        if (profileFullName) {
+
+            profileFullName.textContent =
+                user.name;
+        }
+
+
+        if (profilePhone) {
+
+            profilePhone.textContent =
+                user.phone;
+        }
+
+
+        if (profileAvatar) {
+
+            profileAvatar.textContent =
+                user.name.charAt(0).toUpperCase();
+        }
+
+
+        // Hide edit section after saving
+
+        if (editProfileSection) {
+
+            setTimeout(function() {
+
+                editProfileSection.style.display =
+                    "none";
+
+            }, 1000);
+
+        }
 
     });
 
 }
 
+
+/* =========================================================
+   SETTINGS PAGE
+   ========================================================= */
+
 const settingsPage =
     document.querySelector(".settings-page");
 
+
 if (settingsPage) {
 
-    const loggedIn =
-        localStorage.getItem("winnersChessLoggedIn");
-
-    const savedUser =
-        localStorage.getItem("winnersChessUser");
-
-
-    if (loggedIn !== "true" || !savedUser) {
-
-        window.location.href = "login.html";
-
-    }
+    protectPage();
 
 }
+
+
+/* =========================================================
+   DARK MODE / LIGHT MODE
+   ========================================================= */
 
 const darkModeToggle =
     document.getElementById("darkModeToggle");
 
-if (darkModeToggle) {
+
+function applyTheme() {
 
     const darkMode =
         localStorage.getItem("winnersDarkMode");
@@ -444,10 +718,31 @@ if (darkModeToggle) {
 
     if (darkMode === "false") {
 
-        darkModeToggle.checked = false;
+        document.body.classList.add("light-mode");
 
     }
 
+    else {
+
+        document.body.classList.remove("light-mode");
+
+    }
+
+
+    if (darkModeToggle) {
+
+        darkModeToggle.checked =
+            darkMode !== "false";
+
+    }
+
+}
+
+
+applyTheme();
+
+
+if (darkModeToggle) {
 
     darkModeToggle.addEventListener(
         "change",
@@ -458,33 +753,46 @@ if (darkModeToggle) {
                 darkModeToggle.checked
             );
 
+
+            applyTheme();
+
         }
     );
 
 }
+
+
+/* =========================================================
+   TOURNAMENT NOTIFICATIONS
+   ========================================================= */
 
 const tournamentNotifications =
     document.getElementById(
         "tournamentNotifications"
     );
 
-const classNotifications =
-    document.getElementById(
-        "classNotifications"
-    );
-
 
 if (tournamentNotifications) {
 
-    const tournamentSetting =
+    const savedSetting =
         localStorage.getItem(
             "tournamentNotifications"
         );
 
 
-    if (tournamentSetting === "false") {
+    // Default is ON
 
-        tournamentNotifications.checked = false;
+    if (savedSetting === null) {
+
+        tournamentNotifications.checked =
+            true;
+
+    }
+
+    else {
+
+        tournamentNotifications.checked =
+            savedSetting !== "false";
 
     }
 
@@ -504,17 +812,37 @@ if (tournamentNotifications) {
 }
 
 
+/* =========================================================
+   CLASS NOTIFICATIONS
+   ========================================================= */
+
+const classNotifications =
+    document.getElementById(
+        "classNotifications"
+    );
+
+
 if (classNotifications) {
 
-    const classSetting =
+    const savedSetting =
         localStorage.getItem(
             "classNotifications"
         );
 
 
-    if (classSetting === "false") {
+    // Default is ON
 
-        classNotifications.checked = false;
+    if (savedSetting === null) {
+
+        classNotifications.checked =
+            true;
+
+    }
+
+    else {
+
+        classNotifications.checked =
+            savedSetting !== "false";
 
     }
 
@@ -533,6 +861,11 @@ if (classNotifications) {
 
 }
 
+
+/* =========================================================
+   SETTINGS LOGOUT
+   ========================================================= */
+
 const settingsLogoutButton =
     document.getElementById(
         "settingsLogoutButton"
@@ -549,6 +882,7 @@ if (settingsLogoutButton) {
                 "winnersChessLoggedIn"
             );
 
+
             window.location.href =
                 "login.html";
 
@@ -556,6 +890,11 @@ if (settingsLogoutButton) {
     );
 
 }
+
+
+/* =========================================================
+   DELETE ACCOUNT
+   ========================================================= */
 
 const deleteAccountButton =
     document.getElementById(
@@ -569,6 +908,7 @@ if (deleteAccountButton) {
         "click",
         function() {
 
+
             const confirmDelete =
                 confirm(
                     "Are you sure you want to delete your account?"
@@ -577,14 +917,33 @@ if (deleteAccountButton) {
 
             if (confirmDelete) {
 
+
+                // Delete user
+
                 localStorage.removeItem(
                     "winnersChessUser"
                 );
+
+
+                // Delete login status
 
                 localStorage.removeItem(
                     "winnersChessLoggedIn"
                 );
 
+
+                // Delete personal settings
+
+                localStorage.removeItem(
+                    "tournamentNotifications"
+                );
+
+                localStorage.removeItem(
+                    "classNotifications"
+                );
+
+
+                // Go to registration
 
                 window.location.href =
                     "register.html";
@@ -596,6 +955,11 @@ if (deleteAccountButton) {
 
 }
 
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
 const menuButton =
     document.getElementById("menuButton");
 
@@ -605,10 +969,99 @@ const navLinks =
 
 if (menuButton && navLinks) {
 
-    menuButton.addEventListener("click", function() {
 
-        navLinks.classList.toggle("active");
+    // Open / close menu
+
+    menuButton.addEventListener(
+        "click",
+        function() {
+
+            navLinks.classList.toggle("active");
+
+        }
+    );
+
+
+    // Close menu after clicking a link
+
+    const navItems =
+        navLinks.querySelectorAll("a");
+
+
+    navItems.forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function() {
+
+                navLinks.classList.remove("active");
+
+            }
+        );
 
     });
 
 }
+
+
+/* =========================================================
+   CLOSE MOBILE MENU WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if (!menuButton || !navLinks) {
+
+            return;
+        }
+
+
+        const clickedInsideMenu =
+            navLinks.contains(event.target);
+
+        const clickedButton =
+            menuButton.contains(event.target);
+
+
+        if (
+            !clickedInsideMenu &&
+            !clickedButton
+        ) {
+
+            navLinks.classList.remove("active");
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   PREVENT LOGGED-IN USER FROM GOING TO LOGIN/REGISTER
+   ========================================================= */
+
+const loginPageForm =
+    document.getElementById("loginForm");
+
+const registerPageForm =
+    document.getElementById("registerForm");
+
+
+if (
+    (loginPageForm || registerPageForm) &&
+    isLoggedIn() &&
+    getSavedUser()
+) {
+
+    // User is already logged in.
+    // We don't automatically redirect here because
+    // the user may still want to register another account.
+
+}
+
+
+/* =========================================================
+   END OF SCRIPT
+   ========================================================= */
