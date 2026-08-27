@@ -956,6 +956,265 @@ if (deleteAccountButton) {
 }
 
 
+
+
+/* =========================================================
+   CHANGE PASSWORD
+   ========================================================= */
+
+const changePasswordButton =
+    document.getElementById("changePasswordButton");
+
+const changePasswordSection =
+    document.getElementById("changePasswordSection");
+
+const cancelPasswordButton =
+    document.getElementById("cancelPasswordButton");
+
+const savePasswordButton =
+    document.getElementById("savePasswordButton");
+
+const passwordMessage =
+    document.getElementById("passwordMessage");
+
+
+// Open change password section
+
+if (changePasswordButton) {
+
+    changePasswordButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            if (changePasswordSection) {
+
+                changePasswordSection.style.display =
+                    "block";
+
+                changePasswordSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }
+
+        }
+    );
+
+}
+
+
+// Cancel change password
+
+if (cancelPasswordButton) {
+
+    cancelPasswordButton.addEventListener(
+        "click",
+        function() {
+
+            if (changePasswordSection) {
+
+                changePasswordSection.style.display =
+                    "none";
+
+            }
+
+
+            // Clear fields
+
+            document.getElementById(
+                "currentPassword"
+            ).value = "";
+
+            document.getElementById(
+                "newPassword"
+            ).value = "";
+
+            document.getElementById(
+                "confirmNewPassword"
+            ).value = "";
+
+
+            if (passwordMessage) {
+
+                passwordMessage.textContent = "";
+
+            }
+
+        }
+    );
+
+}
+
+
+// Update password
+
+if (savePasswordButton) {
+
+    savePasswordButton.addEventListener(
+        "click",
+        function() {
+
+
+            const user =
+                getSavedUser();
+
+
+            // Check user
+
+            if (!user) {
+
+                window.location.href =
+                    "login.html";
+
+                return;
+
+            }
+
+
+            const currentPassword =
+                document.getElementById(
+                    "currentPassword"
+                ).value;
+
+            const newPassword =
+                document.getElementById(
+                    "newPassword"
+                ).value;
+
+            const confirmNewPassword =
+                document.getElementById(
+                    "confirmNewPassword"
+                ).value;
+
+
+            // Check empty fields
+
+            if (
+                !currentPassword ||
+                !newPassword ||
+                !confirmNewPassword
+            ) {
+
+                passwordMessage.textContent =
+                    "Please fill in all password fields.";
+
+                return;
+
+            }
+
+
+            // Check current password
+
+            if (currentPassword !== user.password) {
+
+                passwordMessage.textContent =
+                    "Current password is incorrect.";
+
+                return;
+
+            }
+
+
+            // Check new password length
+
+            if (newPassword.length < 6) {
+
+                passwordMessage.textContent =
+                    "New password must contain at least 6 characters.";
+
+                return;
+
+            }
+
+
+            // Check new password confirmation
+
+            if (newPassword !== confirmNewPassword) {
+
+                passwordMessage.textContent =
+                    "New passwords do not match.";
+
+                return;
+
+            }
+
+
+            // Check whether new password is same
+            // as current password
+
+            if (newPassword === currentPassword) {
+
+                passwordMessage.textContent =
+                    "New password must be different from your current password.";
+
+                return;
+
+            }
+
+
+            // Update password
+
+            user.password =
+                newPassword;
+
+
+            // Save updated user
+
+            localStorage.setItem(
+                "winnersChessUser",
+                JSON.stringify(user)
+            );
+
+
+            // Success message
+
+            passwordMessage.textContent =
+                "Password updated successfully!";
+
+
+            // Clear fields
+
+            document.getElementById(
+                "currentPassword"
+            ).value = "";
+
+            document.getElementById(
+                "newPassword"
+            ).value = "";
+
+            document.getElementById(
+                "confirmNewPassword"
+            ).value = "";
+
+
+            // Hide section after a short delay
+
+            setTimeout(function() {
+
+                if (changePasswordSection) {
+
+                    changePasswordSection.style.display =
+                        "none";
+
+                }
+
+                if (passwordMessage) {
+
+                    passwordMessage.textContent = "";
+
+                }
+
+            }, 1500);
+
+        }
+    );
+
+}
+
+
 /* =========================================================
    MOBILE MENU
    ========================================================= */

@@ -16,24 +16,51 @@
 <body>
 
 
-    <!-- Navigation -->
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
 
     <nav class="navbar">
+
+        <!-- Logo -->
 
         <div class="logo">
             ♟ Winners Chess Academy
         </div>
 
 
-        <div class="nav-links">
+        <!-- Navigation Links -->
 
-            <a href="index.html">Home</a>
-            <a href="programs.html">Programs</a>
-            <a href="tournaments.html">Tournaments</a>
-            <a href="schedule.html">Schedule</a>
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="about.html">
+                About
+            </a>
+
+            <a href="programs.html">
+                Programs
+            </a>
+
+            <a href="tournaments.html">
+                Tournaments
+            </a>
+
+            <a href="coaches.html">
+                Coaches
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
         </div>
 
+
+        <!-- User Options -->
 
         <div class="user-options">
 
@@ -41,26 +68,52 @@
                 Dashboard
             </a>
 
-            <a href="settings.html">
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="settings.html" aria-label="Settings">
                 ⚙
             </a>
 
-            <button id="logoutButton" class="logout-button">
+            <button
+                type="button"
+                id="logoutButton"
+                class="logout-button">
+
                 Logout
+
             </button>
 
         </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            type="button"
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
 
     </nav>
 
 
 
-    <!-- Dashboard -->
+    <!-- =====================================================
+         DASHBOARD
+         ===================================================== -->
 
     <main class="dashboard-page">
 
 
-        <!-- Welcome -->
+        <!-- =================================================
+             WELCOME SECTION
+             ================================================= -->
 
         <section class="dashboard-welcome">
 
@@ -71,10 +124,13 @@
                 </p>
 
                 <h1>
+
                     Welcome back,
+                    
                     <span id="dashboardName">
                         Player
                     </span>!
+
                 </h1>
 
                 <p>
@@ -93,7 +149,9 @@
 
 
 
-        <!-- Dashboard Cards -->
+        <!-- =================================================
+             DASHBOARD CARDS
+             ================================================= -->
 
         <section class="dashboard-grid">
 
@@ -115,8 +173,12 @@
                     profile information.
                 </p>
 
-                <a href="profile.html" class="dashboard-link">
+                <a
+                    href="profile.html"
+                    class="dashboard-link">
+
                     View Profile →
+
                 </a>
 
             </div>
@@ -140,8 +202,12 @@
                     training sessions.
                 </p>
 
-                <a href="schedule.html" class="dashboard-link">
+                <a
+                    href="schedule.html"
+                    class="dashboard-link">
+
                     View Schedule →
+
                 </a>
 
             </div>
@@ -165,8 +231,12 @@
                     and competitions.
                 </p>
 
-                <a href="tournaments.html" class="dashboard-link">
+                <a
+                    href="tournaments.html"
+                    class="dashboard-link">
+
                     View Tournaments →
+
                 </a>
 
             </div>
@@ -190,8 +260,12 @@
                     and milestones.
                 </p>
 
-                <a href="achievements.html" class="dashboard-link">
+                <a
+                    href="achievements.html"
+                    class="dashboard-link">
+
                     View Achievements →
+
                 </a>
 
             </div>
@@ -201,7 +275,9 @@
 
 
 
-        <!-- Account Information -->
+        <!-- =================================================
+             ACCOUNT INFORMATION
+             ================================================= -->
 
         <section class="dashboard-account">
 
@@ -221,8 +297,12 @@
                 </div>
 
 
-                <a href="profile.html" class="secondary-button">
+                <a
+                    href="profile.html"
+                    class="secondary-button">
+
                     Edit Profile
+
                 </a>
 
             </div>
@@ -231,6 +311,8 @@
 
             <div class="account-info-grid">
 
+
+                <!-- Full Name -->
 
                 <div class="account-info-item">
 
@@ -245,6 +327,8 @@
                 </div>
 
 
+                <!-- Email -->
+
                 <div class="account-info-item">
 
                     <span>
@@ -258,6 +342,8 @@
                 </div>
 
 
+                <!-- Phone -->
+
                 <div class="account-info-item">
 
                     <span>
@@ -270,6 +356,8 @@
 
                 </div>
 
+
+                <!-- Membership -->
 
                 <div class="account-info-item">
 
@@ -290,7 +378,9 @@
 
 
 
-        <!-- Quick Actions -->
+        <!-- =================================================
+             QUICK ACTIONS
+             ================================================= -->
 
         <section class="dashboard-actions">
 
@@ -301,16 +391,30 @@
 
             <div class="quick-action-buttons">
 
-                <a href="schedule.html" class="primary-button">
+                <a
+                    href="schedule.html"
+                    class="primary-button">
+
                     View Schedule
+
                 </a>
 
-                <a href="tournaments.html" class="secondary-button">
+
+                <a
+                    href="tournaments.html"
+                    class="secondary-button">
+
                     Find Tournament
+
                 </a>
 
-                <a href="contact.html" class="secondary-button">
+
+                <a
+                    href="contact.html"
+                    class="secondary-button">
+
                     Contact Academy
+
                 </a>
 
             </div>
@@ -322,12 +426,17 @@
 
 
 
-    <!-- Footer -->
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
 
     <footer class="footer">
 
+
         <div class="footer-content">
 
+
+            <!-- Academy -->
 
             <div class="footer-about">
 
@@ -336,59 +445,79 @@
                 </div>
 
                 <p>
+
                     Master the game. Become a winner.
+
                     Developing chess players through
                     knowledge, practice and competition.
+
                 </p>
 
             </div>
 
 
-            <div class="footer-links">
+
+            <!-- Academy Links -->
+
+            <div>
 
                 <h3>
                     Academy
                 </h3>
 
-                <a href="programs.html">
-                    Programs
-                </a>
+                <div class="footer-links">
 
-                <a href="schedule.html">
-                    Schedule
-                </a>
+                    <a href="programs.html">
+                        Programs
+                    </a>
 
-                <a href="tournaments.html">
-                    Tournaments
-                </a>
+                    <a href="schedule.html">
+                        Schedule
+                    </a>
 
-                <a href="achievements.html">
-                    Achievements
-                </a>
+                    <a href="tournaments.html">
+                        Tournaments
+                    </a>
+
+                    <a href="achievements.html">
+                        Achievements
+                    </a>
+
+                </div>
 
             </div>
 
 
-            <div class="footer-links">
+
+            <!-- Account Links -->
+
+            <div>
 
                 <h3>
                     Account
                 </h3>
 
-                <a href="dashboard.html">
-                    Dashboard
-                </a>
+                <div class="footer-links">
 
-                <a href="profile.html">
-                    Profile
-                </a>
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
 
-                <a href="settings.html">
-                    Settings
-                </a>
+                    <a href="profile.html">
+                        Profile
+                    </a>
+
+                    <a href="settings.html">
+                        Settings
+                    </a>
+
+                </div>
 
             </div>
 
+
+
+            <!-- Contact -->
 
             <div class="footer-contact">
 
@@ -414,6 +543,9 @@
         </div>
 
 
+
+        <!-- Footer Bottom -->
+
         <div class="footer-bottom">
 
             <p>
@@ -423,11 +555,17 @@
 
         </div>
 
+
     </footer>
 
 
 
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
     <script src="script.js"></script>
+
 
 </body>
 
