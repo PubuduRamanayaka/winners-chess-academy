@@ -7,18 +7,24 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback_local_secret_key")
 
-def get_db():
+def get_database_url():
     database_url = os.environ.get("DATABASE_URL")
+    if database_url and database_url.startswith("postgres://"):
+        database_url = database_url.replace("postgres://", "postgresql://", 1)
+    return database_url
+
+def get_db():
+    database_url = get_database_url()
     if database_url:
         return psycopg2.connect(database_url)
     else:
         return sqlite3.connect('academy.db')
 
 def init_db():
+    database_url = get_database_url()
     conn = get_db()
     cursor = conn.cursor()
     
-    database_url = os.environ.get("DATABASE_URL")
     if database_url:
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS users (
@@ -27,7 +33,7 @@ def init_db():
                 email TEXT UNIQUE NOT NULL,
                 phone TEXT,
                 password TEXT NOT NULL
-            )
+            );
         ''')
     else:
         cursor.execute('''
@@ -37,14 +43,17 @@ def init_db():
                 email TEXT UNIQUE NOT NULL,
                 phone TEXT,
                 password TEXT NOT NULL
-            )
+            );
         ''')
         
     conn.commit()
     conn.close()
 
-# Automatically run table check on boot
-init_db()
+# Run table initialization safely on app startup
+try:
+    init_db()
+except Exception as e:
+    print(f"Error during init_db: {e}")
 
 
 @app.route("/")
@@ -61,7 +70,8 @@ def login():
 
         conn = get_db()
         cursor = conn.cursor()
-        cursor.execute('SELECT * FROM users WHERE email = %s', (email,))
+        placeholder = "%s" if get_database_url() else "?"
+        cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (email,))
         user = cursor.fetchone()
         conn.close()
 
@@ -81,7 +91,8 @@ def dashboard():
 
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM users WHERE email = %s', (session["user_email"],))
+    placeholder = "%s" if get_database_url() else "?"
+    cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (session["user_email"],))
     user = cursor.fetchone()
     conn.close()
 
@@ -140,6 +151,7 @@ def settings():
 
     conn = get_db()
     cursor = conn.cursor()
+    placeholder = "%s" if get_database_url() else "?"
 
     if request.method == "POST":
         action = request.form.get("action")
@@ -148,12 +160,12 @@ def settings():
             current_pass = request.form.get("currentPassword")
             new_pass = request.form.get("newPassword")
 
-            cursor.execute('SELECT * FROM users WHERE email = %s', (session["user_email"],))
+            cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (session["user_email"],))
             user = cursor.fetchone()
 
             if user and check_password_hash(user[4], current_pass):
                 new_hashed = generate_password_hash(new_pass)
-                cursor.execute('UPDATE users SET password = %s WHERE email = %s', (new_hashed, session["user_email"]))
+                cursor.execute(f'UPDATE users SET password = {placeholder} WHERE email = {placeholder}', (new_hashed, session["user_email"]))
                 conn.commit()
                 conn.close()
                 return "Password updated successfully! <a href='/dashboard'>Back to Dashboard</a>"
@@ -162,7 +174,7 @@ def settings():
                 return "Current password incorrect! <a href='/settings'>Try again</a>"
 
         elif action == "delete_account":
-            cursor.execute('DELETE FROM users WHERE email = %s', (session["user_email"],))
+            cursor.execute(f'DELETE FROM users WHERE email = {placeholder}', (session["user_email"],))
             conn.commit()
             conn.close()
             session.pop("user_email", None)
@@ -185,15 +197,16 @@ def profile():
 
     conn = get_db()
     cursor = conn.cursor()
+    placeholder = "%s" if get_database_url() else "?"
 
     if request.method == "POST":
         new_name = request.form.get("username")
         new_phone = request.form.get("phone")
 
-        cursor.execute('UPDATE users SET username = %s, phone = %s WHERE email = %s', (new_name, new_phone, session["user_email"]))
+        cursor.execute(f'UPDATE users SET username = {placeholder}, phone = {placeholder} WHERE email = {placeholder}', (new_name, new_phone, session["user_email"]))
         conn.commit()
 
-    cursor.execute('SELECT * FROM users WHERE email = %s', (session["user_email"],))
+    cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (session["user_email"],))
     user = cursor.fetchone()
     conn.close()
 
@@ -210,8 +223,9 @@ def register():
 
         conn = get_db()
         cursor = conn.cursor()
+        placeholder = "%s" if get_database_url() else "?"
 
-        cursor.execute('SELECT * FROM users WHERE email = %s', (email,))
+        cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (email,))
         existing_user = cursor.fetchone()
 
         if existing_user:
@@ -219,8 +233,10 @@ def register():
             return "An account with this email already exists! Please hit the back button and try a different email."
 
         hashed_password = generate_password_hash(password)
-        cursor.execute('INSERT INTO users (username, email, phone, password) VALUES (%s, %s, %s, %s)',
-                       (username, email, phone, hashed_password))
+        cursor.execute(
+            f'INSERT INTO users (username, email, phone, password) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder})',
+            (username, email, phone, hashed_password)
+        )
         conn.commit()
         conn.close()
 
