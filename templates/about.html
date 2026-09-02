@@ -355,9 +355,15 @@
             for your next tournament, we're here to help.
         </p>
 
-        <a href="/register" class="primary-button">
-            Join Winners Chess Academy
-        </a>
+        {% if session.get('user_email') %}
+            <a href="/dashboard" class="primary-button">
+                Go to Dashboard
+            </a>
+        {% else %}
+            <a href="/register" class="primary-button">
+                Join Winners Chess Academy
+            </a>
+        {% endif %}
 
     </section>
 
