@@ -83,9 +83,15 @@
 
             <div class="hero-buttons">
 
-                <a href="/register" class="primary-button">
-                    JOIN THE ACADEMY
+            {% if session.get('user_email') %}
+                <a href="/dashboard" class="primary-button">
+                    Go to Dashboard
                 </a>
+            {% else %}
+                <a href="/register" class="primary-button">
+                    Join Winners Chess Academy
+                </a>
+            {% endif %}
 
                 <a href="/programs" class="secondary-button">
                     EXPLORE PROGRAMS
