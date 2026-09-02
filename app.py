@@ -1,11 +1,22 @@
 import os
-import psycopg2
 import sqlite3
-from flask import Flask, render_template, request, redirect, session
+import psycopg2
+from flask import Flask, render_template, request, redirect, session, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
+from authlib.integrations.flask_client import OAuth
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback_local_secret_key")
+
+# --- Google OAuth Configuration ---
+oauth = OAuth(app)
+google = oauth.register(
+    name='google',
+    client_id=os.environ.get('GOOGLE_CLIENT_ID'),
+    client_secret=os.environ.get('GOOGLE_CLIENT_SECRET'),
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={'scope': 'openid email profile'}
+)
 
 def get_database_url():
     database_url = os.environ.get("DATABASE_URL")
@@ -49,7 +60,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Run table initialization safely on app startup
+# Automatically initialize tables on startup
 try:
     init_db()
 except Exception as e:
@@ -60,6 +71,42 @@ except Exception as e:
 @app.route("/index")
 def home():
     return render_template("index.html")
+
+
+# --- Google OAuth Handlers ---
+@app.route("/login/google")
+def google_login():
+    redirect_uri = url_for('google_authorize', _external=True)
+    return google.authorize_redirect(redirect_uri)
+
+
+@app.route("/authorize")
+def google_authorize():
+    token = google.authorize_access_token()
+    resp = google.get('https://www.googleapis.com/oauth2/v1/userinfo')
+    user_info = resp.json()
+    
+    email = user_info.get('email')
+    name = user_info.get('name')
+
+    conn = get_db()
+    cursor = conn.cursor()
+    placeholder = "%s" if get_database_url() else "?"
+
+    cursor.execute(f'SELECT * FROM users WHERE email = {placeholder}', (email,))
+    user = cursor.fetchone()
+
+    # If user doesn't exist, auto-register them
+    if not user:
+        cursor.execute(
+            f'INSERT INTO users (username, email, phone, password) VALUES ({placeholder}, {placeholder}, {placeholder}, {placeholder})',
+            (name, email, "", "GOOGLE_AUTH_USER")
+        )
+        conn.commit()
+
+    conn.close()
+    session["user_email"] = email
+    return redirect("/dashboard")
 
 
 @app.route("/login", methods=["GET", "POST"])

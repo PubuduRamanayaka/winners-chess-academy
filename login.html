@@ -9,7 +9,7 @@
 
     <title>Login | Winners Chess Academy</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -27,21 +27,21 @@
 
         <div class="nav-links">
 
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="programs.html">Programs</a>
-            <a href="tournaments.html">Tournaments</a>
-            <a href="coaches.html">Coaches</a>
-            <a href="contact.html">Contact</a>
+            <a href="/index">Home</a>
+            <a href="/about">About</a>
+            <a href="/programs">Programs</a>
+            <a href="/tournaments">Tournaments</a>
+            <a href="/coaches">Coaches</a>
+            <a href="/contact">Contact</a>
 
         </div>
 
 
         <div class="user-options">
 
-            <a href="register.html">Register</a>
-            <a href="login.html">Login</a>
-            <a href="settings.html">⚙</a>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+            <a href="/settings">⚙</a>
 
         </div>
 
@@ -79,7 +79,7 @@
 
 
 
-            <form id="loginForm">
+            <form id="loginForm" action="/login" method="POST">
 
 
                 <!-- Email -->
@@ -93,6 +93,7 @@
                     <input
                         type="email"
                         id="loginEmail"
+                        name="email"
                         placeholder="Enter your email"
                         required>
 
@@ -111,6 +112,7 @@
                     <input
                         type="password"
                         id="loginPassword"
+                        name="password"
                         placeholder="Enter your password"
                         required>
 
@@ -152,6 +154,18 @@
                     Login
 
                 </button>
+                
+                
+                <!-- Google Sign-In Divider -->
+                <div style="margin: 20px 0; text-align: center; color: #888; font-size: 0.9em;">
+                    <span>— OR —</span>
+                </div>
+
+                <!-- Google Sign-In Button -->
+                <a href="/login/google" class="primary-button auth-button" style="background-color: white; color: #333; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;">
+                    <img width="18px" alt="Google logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"/>
+                    Sign in with Google
+                </a>
 
 
 
@@ -175,7 +189,7 @@
 
                     Don't have an account?
 
-                    <a href="register.html">
+                    <a href="/register">
                         Create an account
                     </a>
 
@@ -218,11 +232,11 @@
                     Quick Links
                 </h3>
 
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="tournaments.html">Tournaments</a>
-                <a href="coaches.html">Coaches</a>
-                <a href="contact.html">Contact</a>
+                <a href="/index">Home</a>
+                <a href="/about">About</a>
+                <a href="/tournaments">Tournaments</a>
+                <a href="/coaches">Coaches</a>
+                <a href="/contact">Contact</a>
 
             </div>
 
@@ -233,11 +247,11 @@
                     Academy
                 </h3>
 
-                <a href="programs.html">Programs</a>
-                <a href="locations.html">Locations</a>
-                <a href="schedule.html">Schedule</a>
-                <a href="achievements.html">Achievements</a>
-                <a href="gallery.html">Gallery</a>
+                <a href="/programs">Programs</a>
+                <a href="/locations">Locations</a>
+                <a href="/schedule">Schedule</a>
+                <a href="/achievements">Achievements</a>
+                <a href="/gallery">Gallery</a>
 
             </div>
 
@@ -278,7 +292,7 @@
 
 
 
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 
 </body>
 
