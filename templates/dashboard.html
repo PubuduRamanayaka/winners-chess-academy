@@ -63,28 +63,34 @@
         <!-- User Options -->
 
         <div class="user-options">
+            {% if session.get('user_email') %}
+                <a href="/dashboard">
+                    Dashboard
+                </a>
 
-            <a href="/dashboard">
-                Dashboard
-            </a>
+                <a href="/profile">
+                    Profile
+                </a>
 
-            <a href="/profile">
-                Profile
-            </a>
+                <a href="/settings" aria-label="Settings">
+                    ⚙
+                </a>
 
-            <a href="/settings" aria-label="Settings">
-                ⚙
-            </a>
-
-            <a
-                href="/logout"
-                id="logoutButton"
-                class="logout-button">
-
-                Logout
-
-            </a>
-
+                <a
+                    href="/logout"
+                    id="logoutButton"
+                    class="logout-button">
+                    Logout
+                </a>
+            {% else %}
+                <a href="/register">
+                    Register
+                </a>
+                
+                <a href="/login">
+                    Login
+                </a>
+            {% endif %}
         </div>
 
 

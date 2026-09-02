@@ -16,34 +16,95 @@
 <body>
 
 
-    <!-- Navigation -->
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
 
     <nav class="navbar">
+
+        <!-- Logo -->
 
         <div class="logo">
             ♟ Winners Chess Academy
         </div>
 
-        <div class="nav-links">
 
-            <a href="/index">Home</a>
-            <a href="/programs">Programs</a>
-            <a href="/tournaments">Tournaments</a>
-            <a href="/schedule">Schedule</a>
+        <!-- Navigation Links -->
 
-        </div>
+        <div class="nav-links" id="navLinks">
 
-        <div class="user-options">
+            <a href="/index">
+                Home
+            </a>
 
-            <a href="/dashboard">Dashboard</a>
+            <a href="/about">
+                About
+            </a>
 
-            <a href="/settings">⚙</a>
+            <a href="/programs">
+                Programs
+            </a>
 
-            <a href="/logout" id="profileLogoutButton" class="logout-button">
-                Logout
+            <a href="/tournaments">
+                Tournaments
+            </a>
+
+            <a href="/coaches">
+                Coaches
+            </a>
+
+            <a href="/contact">
+                Contact
             </a>
 
         </div>
+
+
+        <!-- User Options -->
+
+        <div class="user-options">
+            {% if session.get('user_email') %}
+                <a href="/dashboard">
+                    Dashboard
+                </a>
+
+                <a href="/profile">
+                    Profile
+                </a>
+
+                <a href="/settings" aria-label="Settings">
+                    ⚙
+                </a>
+
+                <a
+                    href="/logout"
+                    id="logoutButton"
+                    class="logout-button">
+                    Logout
+                </a>
+            {% else %}
+                <a href="/register">
+                    Register
+                </a>
+                
+                <a href="/login">
+                    Login
+                </a>
+            {% endif %}
+        </div>
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            type="button"
+            class="menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
 
     </nav>
 
