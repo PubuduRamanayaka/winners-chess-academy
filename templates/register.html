@@ -89,76 +89,153 @@
 
             <form id="registerForm" action="/register" method="POST">
 
+
                 <!-- Full Name -->
+
                 <div class="form-group">
-                    <label for="registerName">Full Name</label>
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
                     <input
                         type="text"
                         id="registerName"
                         name="username"
                         placeholder="Enter your full name"
                         required>
+
                 </div>
 
+
+
                 <!-- Email -->
+
                 <div class="form-group">
-                    <label for="registerEmail">Email Address</label>
+
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+
                     <input
                         type="email"
                         id="registerEmail"
                         name="email"
                         placeholder="Enter your email"
                         required>
+
                 </div>
 
+
+
                 <!-- Phone -->
+
                 <div class="form-group">
-                    <label for="registerPhone">Phone Number</label>
+
+                    <label for="registerPhone">
+                        Phone Number
+                    </label>
+
                     <input
                         type="tel"
                         id="registerPhone"
                         name="phone"
                         placeholder="Enter your phone number"
                         required>
+
                 </div>
 
+
+
                 <!-- Password -->
+
                 <div class="form-group">
-                    <label for="registerPassword">Password</label>
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
                     <input
                         type="password"
                         id="registerPassword"
                         name="password"
                         placeholder="Create a password"
                         required>
+
                 </div>
 
+
+
                 <!-- Confirm Password -->
+
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
                     <input
                         type="password"
                         id="confirmPassword"
-                        name="confirm_password"
                         placeholder="Confirm your password"
                         required>
+
                 </div>
+
+
 
                 <!-- Terms -->
+
                 <div class="checkbox-group">
-                    <input type="checkbox" id="terms" name="terms" required>
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required>
+
                     <label for="terms">
-                        I agree to the <a href="#">Terms & Conditions</a>
+
+                        I agree to the
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
+
                     </label>
+
                 </div>
 
+
+
                 <!-- Button -->
-                <button type="submit" class="primary-button auth-button">
+
+                <button
+                    type="submit"
+                    class="primary-button auth-button">
+
                     Create Account
+
                 </button>
+                
+                
+                <!-- Google Sign-Up Divider -->
+                <div style="margin: 20px 0; text-align: center; color: #888; font-size: 0.9em;">
+                    <span>— OR —</span>
+                </div>
+
+                <!-- Google Sign-Up Button -->
+                <a href="/login/google" class="primary-button auth-button" style="background-color: white; color: #333; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;">
+                    <img width="18px" alt="Google logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"/>
+                    Sign up with Google
+                </a>
+
 
                 <!-- Message -->
-                <p id="registerMessage" class="form-status"></p>
+
+                <p
+                    id="registerMessage"
+                    class="form-status">
+                </p>
+
 
             </form>
 

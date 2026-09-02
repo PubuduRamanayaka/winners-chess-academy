@@ -29,7 +29,7 @@
 
             <a href="/index">Home</a>
             <a href="/about">About</a>
-            <a href="/templates">Programs</a>
+            <a href="/programs">Programs</a>
             <a href="/tournaments">Tournaments</a>
             <a href="/coaches">Coaches</a>
             <a href="/contact">Contact</a>
@@ -80,20 +80,103 @@
 
 
             <form id="loginForm" action="/login" method="POST">
-    
-                <div class="form-group">
-                    <label for="loginEmail">Email Address</label>
-                    <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
-                </div>
+
+
+                <!-- Email -->
 
                 <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+
+                    <label for="loginEmail">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        name="email"
+                        placeholder="Enter your email"
+                        required>
+
                 </div>
 
-                <button type="submit" class="primary-button auth-button">
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        name="password"
+                        placeholder="Enter your password"
+                        required>
+
+                </div>
+
+
+
+                <!-- Remember me -->
+
+                <div class="login-options">
+
+                    <div class="checkbox-group">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe">
+
+                        <label for="rememberMe">
+                            Remember me
+                        </label>
+
+                    </div>
+
+
+                    <a href="#" id="forgotPassword">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+
+                <!-- Button -->
+
+                <button
+                    type="submit"
+                    class="primary-button auth-button">
+
                     Login
+
                 </button>
+                
+                
+                <!-- Google Sign-In Divider -->
+                <div style="margin: 20px 0; text-align: center; color: #888; font-size: 0.9em;">
+                    <span>— OR —</span>
+                </div>
+
+                <!-- Google Sign-In Button -->
+                <a href="/login/google" class="primary-button auth-button" style="background-color: white; color: #333; border: 1px solid #ccc; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none;">
+                    <img width="18px" alt="Google logo" src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"/>
+                    Sign in with Google
+                </a>
+
+
+
+                <!-- Message -->
+
+                <p
+                    id="loginMessage"
+                    class="form-status">
+                </p>
+
+
             </form>
 
 
