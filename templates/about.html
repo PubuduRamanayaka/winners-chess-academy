@@ -43,13 +43,15 @@
 
 
         <div class="user-options">
-
-            <a href="/register">Register</a>
-
-            <a href="/login">Login</a>
-
-            <a href="/settings">⚙</a>
-
+            {% if session.get('user_email') %}
+                <a href="/dashboard">Dashboard</a>
+                <a href="/profile">Profile</a>
+                <a href="/settings">⚙</a>
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/register">Register</a>
+                <a href="/login">Login</a>
+            {% endif %}
         </div>
 
     </nav>
@@ -466,6 +468,7 @@
 
     </footer>
 
+    <script src="/static/script.js"></script>
 
 </body>
 
