@@ -1,12 +1,18 @@
 import os
 import sqlite3
 import psycopg2
-from flask import Flask, render_template, request, redirect, session, url_for
+import smtplib
+from email.mime.text import MIMEText
+from itsdangerous import URLSafeTimedSerializer
+from flask import Flask, render_template, request, redirect, session, url_for, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from authlib.integrations.flask_client import OAuth
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "fallback_local_secret_key")
+
+# Initialize the secure token generator using your Flask secret key
+s = URLSafeTimedSerializer(app.secret_key)
 
 # --- Google OAuth Configuration ---
 oauth = OAuth(app)
@@ -290,6 +296,50 @@ def register():
         return redirect("/login")
 
     return render_template("register.html")
+
+
+# --- Password Reset Handlers ---
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        
+        # 1. Generate a secure reset token
+        token = s.dumps(email, salt='password-reset-salt')
+        
+        # 2. Build the full URL for the reset link
+        reset_url = url_for('reset_password', token=token, _external=True)
+        
+        # 3. Configure the email
+        sender_email = "winnerschessacademysl@gmail.com"
+        app_password = os.environ.get("MAIL_APP_PASSWORD")
+        
+        msg = MIMEText(f"Click the link below to reset your password:\n\n{reset_url}\n\nIf you did not request this, please ignore this email.")
+        msg['Subject'] = 'Password Reset - Winners Chess Academy'
+        msg['From'] = sender_email
+        msg['To'] = email
+
+        # 4. Connect to Google and send the email
+        try:
+            server = smtplib.SMTP('smtp.gmail.com', 587)
+            server.starttls()
+            server.login(sender_email, app_password)
+            server.sendmail(sender_email, email, msg.as_string())
+            server.quit()
+            
+            flash('If an account exists with that email, a reset link has been sent.', 'success')
+        except Exception as e:
+            flash('Error sending email. Please try again later.', 'error')
+            print(f"Mail Error: {e}")
+            
+        return redirect(url_for('forgot_password'))
+        
+    return render_template('forgot_password.html')
+
+
+@app.route('/reset-password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    return f"We successfully generated a token! The token is: {token} <br><br> (We will build the actual reset form next.)"
 
 
 if __name__ == "__main__":
